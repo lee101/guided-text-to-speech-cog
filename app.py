@@ -21,15 +21,19 @@ SEED = 41
 default_text = "Please surprise me and speak in whatever voice you enjoy."
 examples = [
     [
+        "Remember - this is only the first iteration of the model! To improve the prosody and naturalness of the speech further, we're scaling up the amount of training data by a factor of five times."
+        "A male speaker with a low-pitched voice delivering his words at a fast pace in a small, confined space with a very clear audio and an animated tone."
+    ],
+    [
         "'This is the best time of my life, Bartley,' she said happily.",
         "A female speaker with a slightly low-pitched, quite monotone voice delivers her words at a slightly faster-than-average pace in a confined space with very clear audio.",
     ],
     [
-        "Montrose also, after having experienced still more variety of good and bad fortune, threw down his arms, and retired out of the kingdom.	",
+        "Montrose also, after having experienced still more variety of good and bad fortune, threw down his arms, and retired out of the kingdom.",
         "A male speaker with a slightly high-pitched voice delivering his words at a slightly slow pace in a small, confined space with a touch of background noise and a quite monotone tone.",
     ],
     [
-        "montrose also after having experienced still more variety of good and bad fortune threw down his arms and retired out of the kingdom",
+        "Montrose also, after having experienced still more variety of good and bad fortune, threw down his arms, and retired out of the kingdom.",
         "A male speaker with a low-pitched voice delivering his words at a fast pace in a small, confined space with a lot of background noise and an animated tone.",
     ],
 ]
