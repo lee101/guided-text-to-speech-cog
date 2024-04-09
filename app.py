@@ -119,13 +119,6 @@ with gr.Blocks(css=css) as block:
             <li>The remaining speech features (gender, speaking rate, pitch and reverberation) can be controlled directly through the prompt</li>
         </ul>
         </p>
-
-        <p>To improve the prosody and naturalness of the speech further, we're scaling up the amount of training data to 50k hours of speech.
-        The v1 release of the model will be trained on this data, as well as inference optimisations, such as flash attention
-        and torch compile, that will improve the latency by 2-4x.</p>
-
-        <p>If you want to find out more about how this model was trained and even fine-tune it yourself, check-out the 
-        <a href="https://github.com/huggingface/parler-tts"> Parler-TTS</a> repository on GitHub.</p>
         """
     )
     with gr.Row():
@@ -140,7 +133,17 @@ with gr.Blocks(css=css) as block:
     outputs = [audio_out]
     gr.Examples(examples=examples, fn=gen_tts, inputs=inputs, outputs=outputs, cache_examples=True)
     run_button.click(fn=gen_tts, inputs=inputs, outputs=outputs, queue=True)
-    gr.HTML("The Parler-TTS codebase and its associated checkpoints are licensed under <a href='https://github.com/huggingface/parler-tts?tab=Apache-2.0-1-ov-file#readme'> Apache 2.0</a>.")
+    gr.HTML(
+        """
+        <p>To improve the prosody and naturalness of the speech further, we're scaling up the amount of training data to 50k hours of speech.
+        The v1 release of the model will be trained on this data, as well as inference optimisations, such as flash attention
+        and torch compile, that will improve the latency by 2-4x.</p>
+
+        <p>If you want to find out more about how this model was trained and even fine-tune it yourself, check-out the 
+        <a href="https://github.com/huggingface/parler-tts"> Parler-TTS</a> repository on GitHub.</p>
+        
+        <p>The Parler-TTS codebase and its associated checkpoints are licensed under <a href='https://github.com/huggingface/parler-tts?tab=Apache-2.0-1-ov-file#readme'> Apache 2.0</a></p>.
+        """)
 
 block.queue()
 block.launch(share=True)
