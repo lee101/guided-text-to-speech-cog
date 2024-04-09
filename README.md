@@ -1,5 +1,5 @@
 ---
-title: Parler Tts Mini
+title: Parler-TTS Mini
 emoji: 🐠
 colorFrom: green
 colorTo: pink

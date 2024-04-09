@@ -1,3 +1,4 @@
+import spaces
 import gradio as gr
 import torch
 
@@ -18,9 +19,6 @@ SAMPLE_RATE = feature_extractor.sampling_rate
 SEED = 41
 
 default_text = "Please surprise me and speak in whatever voice you enjoy."
-
-title = "# Parler-TTS </div>"
-
 examples = [
     [
         "'This is the best time of my life, Bartley,' she said happily.",
@@ -37,6 +35,7 @@ examples = [
 ]
 
 
+@spaces.GPU
 def gen_tts(text, description):
     inputs = tokenizer(description, return_tensors="pt").to(device)
     prompt = tokenizer(text, return_tensors="pt").to(device)
@@ -47,7 +46,7 @@ def gen_tts(text, description):
     )
     audio_arr = generation.cpu().numpy().squeeze()
 
-    return (SAMPLE_RATE, audio_arr)
+    return SAMPLE_RATE, audio_arr
 
 
 css = """
@@ -87,7 +86,44 @@ css = """
         }
 """
 with gr.Blocks(css=css) as block:
-    gr.Markdown(title)
+    gr.HTML(
+        """
+            <div style="text-align: center; max-width: 700px; margin: 0 auto;">
+              <div
+                style="
+                  display: inline-flex; align-items: center; gap: 0.8rem; font-size: 1.75rem;
+                "
+              >
+                <h1 style="font-weight: 900; margin-bottom: 7px; line-height: normal;">
+                  Parler-TTS 🗣️
+                </h1>
+              </div>
+            </div>
+        """
+    )
+    gr.HTML(
+        f"""
+        <p><a href="https://github.com/huggingface/parler-tts"> Parler-TTS</a> is a training and inference library for
+        high-fidelity text-to-speech (TTS) models. The model demonstrated here, <a href="parler-tts/parler_tts_300M_v0.1"> Parler-TTS Mini v0.1</a>, 
+        is the first iteration model trained using 10k hours of narrated audiobooks. It generates high-quality speech 
+        with features that can be controlled using a simple text prompt (e.g. gender, background noise, speaking rate, pitch and reverberation).</p>
+
+        <p>Tips for ensuring good generation:
+        <ul>
+            <li>Include the term "very clear audio" to generate the highest quality audio, and "very noisy audio" for high levels of background noise</li>
+            <li>Punctuation can be used to control the prosody of the generations, e.g. use commas to add small breaks in speech</li>
+            <li>The remaining speech features (gender, speaking rate, pitch and reverberation) can be controlled directly through the prompt</li>
+        </ul>
+        </p>
+
+        <p>To improve the prosody and naturalness of the speech further, we're scaling up the amount of training data to 50k hours of speech.
+        The v1 release of the model will be trained on this data, as well as inference optimisations, such as flash attention
+        and torch compile, that will improve the latency by 2-4x.</p>
+
+        <p>If you want to find out more about how this model was trained and even fine-tune it yourself, check-out the 
+        <a href="https://github.com/huggingface/parler-tts"> Parler-TTS</a> repository on GitHub.</p>
+        """
+    )
     with gr.Row():
         with gr.Column():
             input_text = gr.Textbox(label="Input Text", lines=2, value=default_text, elem_id="input_text")
@@ -100,6 +136,7 @@ with gr.Blocks(css=css) as block:
     outputs = [audio_out]
     gr.Examples(examples=examples, fn=gen_tts, inputs=inputs, outputs=outputs, cache_examples=True)
     run_button.click(fn=gen_tts, inputs=inputs, outputs=outputs, queue=True)
+    gr.HTML("The Parler-TTS codebase and its associated checkpoints are licensed under <a href='https://github.com/huggingface/parler-tts?tab=Apache-2.0-1-ov-file#readme'> Apache 2.0</a>.")
 
 block.queue()
 block.launch(share=True)
