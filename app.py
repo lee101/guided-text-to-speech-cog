@@ -21,7 +21,7 @@ SEED = 41
 default_text = "Please surprise me and speak in whatever voice you enjoy."
 examples = [
     [
-        "Remember - this is only the first iteration of the model! To improve the prosody and naturalness of the speech further, we're scaling up the amount of training data by a factor of five times."
+        "Remember - this is only the first iteration of the model! To improve the prosody and naturalness of the speech further, we're scaling up the amount of training data by a factor of five times.",
         "A male speaker with a low-pitched voice delivering his words at a fast pace in a small, confined space with a very clear audio and an animated tone."
     ],
     [
@@ -143,7 +143,8 @@ with gr.Blocks(css=css) as block:
         <a href="https://github.com/huggingface/parler-tts"> Parler-TTS</a> repository on GitHub.</p>
         
         <p>The Parler-TTS codebase and its associated checkpoints are licensed under <a href='https://github.com/huggingface/parler-tts?tab=Apache-2.0-1-ov-file#readme'> Apache 2.0</a></p>.
-        """)
+        """
+    )
 
 block.queue()
 block.launch(share=True)
