@@ -34,7 +34,7 @@ examples = [
     ],
     [
         "Montrose also, after having experienced still more variety of good and bad fortune, threw down his arms, and retired out of the kingdom.",
-        "A male speaker with a low-pitched voice delivering his words at a fast pace in a very roomy and noisy environment and an animated tone. The reverberation is quite pronounced, making the recording seem less clear and potentially indicating a suboptimal recording condition.",
+        "A male speaker with a low-pitched voice delivers his words at a fast pace and an animated tone, in a very spacious environment, accompanied by noticeable background noise.",
     ],
 ]
 
