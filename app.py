@@ -16,7 +16,7 @@ feature_extractor = AutoFeatureExtractor.from_pretrained(repo_id)
 
 
 SAMPLE_RATE = feature_extractor.sampling_rate
-SEED = 41
+SEED = 42
 
 default_text = "Please surprise me and speak in whatever voice you enjoy."
 examples = [
