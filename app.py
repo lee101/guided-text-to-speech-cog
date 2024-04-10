@@ -8,7 +8,7 @@ from transformers import AutoTokenizer, AutoFeatureExtractor, set_seed
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
 
 
-repo_id = "parler-tts/parler_tts_300M_v0.1"
+repo_id = "parler-tts/parler_tts_mini_v0.1"
 
 model = ParlerTTSForConditionalGeneration.from_pretrained(repo_id).to(device)
 tokenizer = AutoTokenizer.from_pretrained(repo_id)
@@ -108,7 +108,7 @@ with gr.Blocks(css=css) as block:
     gr.HTML(
         f"""
         <p><a href="https://github.com/huggingface/parler-tts"> Parler-TTS</a> is a training and inference library for
-        high-fidelity text-to-speech (TTS) models. The model demonstrated here, <a href="https://huggingface.co/parler-tts/parler_tts_300M_v0.1"> Parler-TTS Mini v0.1</a>, 
+        high-fidelity text-to-speech (TTS) models. The model demonstrated here, <a href="https://huggingface.co/parler-tts/parler_tts_mini_v0.1"> Parler-TTS Mini v0.1</a>, 
         is the first iteration model trained using 10k hours of narrated audiobooks. It generates high-quality speech 
         with features that can be controlled using a simple text prompt (e.g. gender, background noise, speaking rate, pitch and reverberation).</p>
 
