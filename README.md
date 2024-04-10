@@ -1,6 +1,6 @@
 ---
 title: Parler-TTS Mini
-emoji: 🐠
+emoji: 🥖
 colorFrom: blue
 colorTo: pink
 sdk: gradio
