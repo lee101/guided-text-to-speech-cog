@@ -140,7 +140,7 @@ with gr.Blocks(css=css) as block:
         and torch compile, that will improve the latency by 2-4x. If you want to find out more about how this model was trained and even fine-tune it yourself, check-out the 
         <a href="https://github.com/huggingface/parler-tts"> Parler-TTS</a> repository on GitHub.</p>
         
-        <p>The Parler-TTS codebase and its associated checkpoints are licensed under <a href='https://github.com/huggingface/parler-tts?tab=Apache-2.0-1-ov-file#readme'> Apache 2.0</a></p>.
+        <p>The Parler-TTS codebase and its associated checkpoints are licensed under <a href='https://github.com/huggingface/parler-tts?tab=Apache-2.0-1-ov-file#readme'> Apache 2.0</a>.</p>
         """
     )
 
