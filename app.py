@@ -63,7 +63,7 @@ def preprocess(text):
             text = text.replace(abv, separate_abb(abv))
     return text
 
-
+@spaces.GPU
 def gen_tts(text, description):
     inputs = tokenizer(description, return_tensors="pt").to(device)
     prompt = tokenizer(preprocess(text), return_tensors="pt").to(device)
