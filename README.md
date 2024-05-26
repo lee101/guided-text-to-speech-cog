@@ -1,23 +1,50 @@
----
-title: Parler-TTS Mini
-emoji: 🥖
-colorFrom: blue
-colorTo: pink
-sdk: gradio
-sdk_version: 4.26.0
-app_file: app.py
-pinned: false
-license: apache-2.0
-short_description: High-fidelity Text-To-Speech
----
+
+# Text Guided Text to Speech Generation
 
 I converted the model to half precision and updated it as a cog so it can be commercialized on replicate more easily.
 
 
 ## How to use
 
+sudo cog predict -i prompt="hi hows it going" -i voice="A Well spoken english male clear voice no background noise"
 
-sudo cog run -i prompt="hi hows it going" -i voice="A Well spoken english male clear voice no background noise"
+![audio](output.wav)
 
 
-Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
+## How to train
+
+See original parler paper.
+
+## How to convert to half precision
+
+I did that already.
+
+## How to convert to cog
+
+I did that/thats what this repo is.
+
+see [predict.py](predict.py)
+
+
+## How to deploy
+
+cog push
+
+## How to run tests
+
+```
+pytest .
+```
+
+## How to run lint
+
+```
+flake8 .
+```
+
+# Plugs and sponsors For AI products.
+See text to speech models on Text-generator.io [https://text-generator.io/](https://text-generator.io/)
+
+AI Chat characters https://netwrck.com [https://netwrck.com](https://netwrck.com)
+
+AI Art Generation https://aiart-generator.io [https://aiart-generator.io](https://aiart-generator.io)
