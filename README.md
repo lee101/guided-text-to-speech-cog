@@ -15,6 +15,12 @@ sudo cog predict -i prompt="hi hows it going" -i voice="A Well spoken english ma
 
 See original parler paper.
 
+## Clone the model
+
+mkdir models
+cd models
+git clone git@hf.co:spaces/parler-tts/parler_tts_mini
+
 ## How to convert to half precision
 
 Uncomment code in predict.py to do that, run it and then copy missing files over from the old full precision model folder.
@@ -24,11 +30,6 @@ Uncomment code in predict.py to do that, run it and then copy missing files over
 I did that/thats what this repo is.
 
 see [predict.py](predict.py)
-
-## Clone the model
-
-git clone git@hf.co:spaces/parler-tts/parler_tts_mini
-
 
 
 ## How to deploy
