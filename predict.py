@@ -1,16 +1,15 @@
 import tempfile
 
 from cog import BasePredictor, Input, Path
-from PIL import Image, ImageFilter
 
 from parlerlib import gen_tts, write_wav
 
 
 class Predictor(BasePredictor):
     def predict(
-        self,
-        prompt: str = Input(description="Voice"),
-        voice: str = Input(description="voice description"),
+            self,
+            prompt: str = Input(description="Voice"),
+            voice: str = Input(description="voice description"),
     ) -> Path:
         sample_rate, audio_arr = gen_tts(prompt, voice)
 
@@ -21,7 +20,6 @@ class Predictor(BasePredictor):
 
         return Path(tmp_file_path)
         # return Path("audio.wav")
-    
 
         # out_path = Path(tempfile.mkdtemp()) / "out.png"
         # im.save(str(out_path))

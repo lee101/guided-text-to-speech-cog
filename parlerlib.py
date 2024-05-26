@@ -7,13 +7,11 @@ from string import punctuation
 import re
 import soundfile as sf
 
-
 from parler_tts import ParlerTTSForConditionalGeneration
 from transformers import AutoTokenizer, AutoFeatureExtractor, set_seed
 import time
 
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
-
 
 # repo_id = "parler-tts/parler_tts_mini_v0.1"
 # repo_id = "models/parler_tts_mini_v0.1"
@@ -34,7 +32,6 @@ model = torch.compile(model)
 
 tokenizer = AutoTokenizer.from_pretrained(repo_id)
 feature_extractor = AutoFeatureExtractor.from_pretrained(repo_id)
-
 
 SAMPLE_RATE = feature_extractor.sampling_rate
 SEED = 42
@@ -61,6 +58,7 @@ examples = [
 
 number_normalizer = EnglishNumberNormalizer()
 
+
 def preprocess(text):
     text = number_normalizer(text).strip()
     text = text.replace("-", " ")
@@ -70,7 +68,7 @@ def preprocess(text):
     abbreviations_pattern = r'\b[A-Z][A-Z\.]+\b'
 
     def separate_abb(chunk):
-        chunk = chunk.replace(".","")
+        chunk = chunk.replace(".", "")
         print(chunk)
         return " ".join(chunk)
 
@@ -80,7 +78,7 @@ def preprocess(text):
             text = text.replace(abv, separate_abb(abv))
     return text
 
-# @spaces.GPU
+
 def gen_tts(text, description):
     inputs = tokenizer(description, return_tensors="pt").to(device)
     prompt = tokenizer(preprocess(text), return_tensors="pt").to(device)
@@ -95,45 +93,6 @@ def gen_tts(text, description):
     return SAMPLE_RATE, audio_arr
 
 
-css = """
-        #share-btn-container {
-            display: flex;
-            padding-left: 0.5rem !important;
-            padding-right: 0.5rem !important;
-            background-color: #000000;
-            justify-content: center;
-            align-items: center;
-            border-radius: 9999px !important; 
-            width: 13rem;
-            margin-top: 10px;
-            margin-left: auto;
-            flex: unset !important;
-        }
-        #share-btn {
-            all: initial;
-            color: #ffffff;
-            font-weight: 600;
-            cursor: pointer;
-            font-family: 'IBM Plex Sans', sans-serif;
-            margin-left: 0.5rem !important;
-            padding-top: 0.25rem !important;
-            padding-bottom: 0.25rem !important;
-            right:0;
-        }
-        #share-btn * {
-            all: unset !important;
-        }
-        #share-btn-container div:nth-child(-n+2){
-            width: auto !important;
-            min-height: 0px !important;
-        }
-        #share-btn-container .wrap {
-            display: none !important;
-        }
-"""
-
-
-
 def write_wav(processed_np_speech, rate):
     # todo fix to use io.BytesIO
     bytes = BytesIO()
@@ -144,7 +103,6 @@ def write_wav(processed_np_speech, rate):
 
 
 if __name__ == "__main__":
-
     start_time = time.time()
     rate, processed_np_speech = gen_tts(examples[0][0], examples[0][1])
 
