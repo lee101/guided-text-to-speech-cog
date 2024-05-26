@@ -58,7 +58,7 @@ pytest .
 ## How to run lint
 
 ```
-flake8 .
+flake8 predict.py
 ```
 
 ## Please help me!!!
