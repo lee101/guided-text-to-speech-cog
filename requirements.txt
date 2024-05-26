@@ -1,1 +1,4 @@
 git+https://github.com/ylacombe/parler-tts.git@parler-tts-release
+transformers==4.40.0
+soundfile
+pydantic==1.8.2

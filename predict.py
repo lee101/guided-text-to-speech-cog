@@ -3,7 +3,7 @@ import tempfile
 from cog import BasePredictor, Input, Path
 from PIL import Image, ImageFilter
 
-from app import gen_tts, write_wav
+from parlerlib import gen_tts, write_wav
 
 
 class Predictor(BasePredictor):

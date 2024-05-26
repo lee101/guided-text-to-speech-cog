@@ -1,10 +1,13 @@
+image: "r8.im/lee101/guided-text-to-speech"
 build:
   python_version: "3.11"
+  gpu: true
   python_packages:
     # - "pillow==8.2.0"
     - "soundfile"
     - "gradio"
     - "pydantic==1.8.2"
+    - "transformers==4.40.0"
     - "git+https://github.com/ylacombe/parler-tts.git@parler-tts-release"
   system_packages:
     - "libpng-dev"
