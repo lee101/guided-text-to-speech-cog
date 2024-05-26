@@ -17,13 +17,18 @@ See original parler paper.
 
 ## How to convert to half precision
 
-I did that already.
+Uncomment code in predict.py to do that, run it and then copy missing files over from the old full precision model folder.
 
 ## How to convert to cog
 
 I did that/thats what this repo is.
 
 see [predict.py](predict.py)
+
+## Clone the model
+
+git clone git@hf.co:spaces/parler-tts/parler_tts_mini
+
 
 
 ## How to deploy
