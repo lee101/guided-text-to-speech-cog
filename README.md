@@ -63,15 +63,21 @@ flake8 predict.py
 
 ## Please help me!!!
 
-[] -- Use a efficient output format not wav
-[] -- Support for more expressive and emotive voices
-[] -- Support for more languages
-[] -- Support for more voices
-[] -- Support for more accents
-[] -- Add more cool stuff like eleven labs style voice clone etc.
-[] -- Voice style transfer
-[] -- SunoAI - Inpainting of audio/generating anything audio
+- [x] Use a efficient output format not wav
+- [ ] Support for more expressive and emotive voices
+- [ ] Support for more languages
+- [ ] Support for more voices
+- [ ] Support for more accents
 
+
+## more cool audio stuff we should do somewhere
+
+- [ ] Eleven labs style voice clone.
+- [ ] Voice style transfer
+- [ ] SunoAI - Inpainting of audio/generating anything audio
+- [ ] Music style transfer
+
+Let me know if these are of interest or if these have been done please link!
 
 # Plugs and sponsors For AI products.
 See text to speech models on Text-generator.io [https://text-generator.io/](https://text-generator.io/)
