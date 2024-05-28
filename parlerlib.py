@@ -1,5 +1,6 @@
 # import spaces
 from io import BytesIO
+import librosa
 import numpy as np
 import torch
 from transformers.models.speecht5.number_normalizer import EnglishNumberNormalizer
@@ -93,11 +94,16 @@ def gen_tts(text, description):
     return SAMPLE_RATE, audio_arr
 
 
-def write_wav(processed_np_speech, rate):
+def write_mp3(processed_np_speech, rate):
     # todo fix to use io.BytesIO
     bytes = BytesIO()
-    bytes.name = "audio.wav"
-    sf.write(bytes, processed_np_speech, rate, subtype='PCM_24')
+    bytes.name = "audio.ogg"
+
+    #  resample to fix Opus only supports sample rates of 8000, 12000, 16000, 24000, and 48000.
+    #
+    processed_np_speech = librosa.resample(processed_np_speech, orig_sr=rate, target_sr=16000)
+    rate = 16000
+    sf.write(bytes, processed_np_speech, rate, format="OGG", subtype="OPUS") #subtype='PCM_24')
     # bytesio to bytes
     return bytes.getvalue()
 
@@ -111,6 +117,6 @@ if __name__ == "__main__":
     execution_time = end_time - start_time
     print(f"Execution time: {execution_time} seconds")
 
-    wav = write_wav(processed_np_speech, rate)
-    with open("audio.wav", "wb") as f:
+    wav = write_mp3(processed_np_speech, rate)
+    with open("audio.mp3", "wb") as f:
         f.write(wav)

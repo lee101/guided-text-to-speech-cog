@@ -2,7 +2,7 @@ import tempfile
 
 from cog import BasePredictor, Input, Path
 
-from parlerlib import gen_tts, write_wav
+from parlerlib import gen_tts, write_mp3
 
 
 class Predictor(BasePredictor):
@@ -13,14 +13,9 @@ class Predictor(BasePredictor):
     ) -> Path:
         sample_rate, audio_arr = gen_tts(prompt, voice)
 
-        wav = write_wav(audio_arr, sample_rate)
-        with tempfile.NamedTemporaryFile(suffix=".wav", delete=False, dir="/dev/shm") as tmp_file:
+        wav = write_mp3(audio_arr, sample_rate)
+        with tempfile.NamedTemporaryFile(suffix=".mp3", delete=False, dir="/dev/shm") as tmp_file:
             tmp_file.write(wav)
             tmp_file_path = tmp_file.name
 
         return Path(tmp_file_path)
-        # return Path("audio.wav")
-
-        # out_path = Path(tempfile.mkdtemp()) / "out.png"
-        # im.save(str(out_path))
-        # return out_path
